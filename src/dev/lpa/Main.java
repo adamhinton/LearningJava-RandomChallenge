@@ -12,6 +12,13 @@ public class Main {
 
     public static void main(String[] args) {
         List<Integer> currentDice = new ArrayList<>();
+
+        int rolls = 0;
+        do{
+            rollDice(currentDice);
+            currentDice.clear();
+        }
+        while(++rolls < 5);
     }
 
     private static void rollDice(List<Integer> currentDice){
