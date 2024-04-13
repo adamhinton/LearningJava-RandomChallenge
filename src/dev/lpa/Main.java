@@ -35,7 +35,7 @@ public class Main {
         System.out.println("Your dice are " + currentDice);
     }
 
-    private static boolean pickLosers(LIst<Integer> currentDice){
+    private static boolean pickLosers(List<Integer> currentDice){
         String prompt = """
                     Press Enter to Score.
                     Type "ALL" to re-roll all the dice.
@@ -44,6 +44,31 @@ public class Main {
 
         System.out.print(prompt + "---> ");
         String userInput = scanner.nextLine();
+
+        if(userInput.isBlank()){
+            return true;
+        }
+
+        try{
+            removeDice(currentDice, userInput.split(" "));
+        }
+        catch(Exception e){
+            e.printStackTrace(System.out);
+            System.out.println("Bad input, try again");
+        }
+        return false;
+    }
+
+    private static void removeDice(List<Integer> currentDice, String[] selected){
+        if (selected.length == 1 && selected[0].contains("ALL")) {
+            currentDice.clear();
+        }
+        else{
+            for(String removed : selected){
+                currentDice.remove(Integer.valueOf(removed));
+            }
+            System.out.println("Keeping " + currentDice);
+        }
     }
 
 }
