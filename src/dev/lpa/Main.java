@@ -35,4 +35,15 @@ public class Main {
         System.out.println("Your dice are " + currentDice);
     }
 
+    private static boolean pickLosers(LIst<Integer> currentDice){
+        String prompt = """
+                    Press Enter to Score.
+                    Type "ALL" to re-roll all the dice.
+                    List numbers (separated by spaces) to re-roll selected dice.
+                """;
+
+        System.out.print(prompt + "---> ");
+        String userInput = scanner.nextLine();
+    }
+
 }
